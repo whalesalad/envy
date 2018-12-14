@@ -1,27 +1,20 @@
-# envy
+# Envy
 
-TODO: Write a description here
+Envy intends to be a very straightforward server that will print its' own environment variables.
 
-## Installation
+I built this to have a quick-n-dirty binary I can run inside of the [Firecracker microVM](https://github.com/firecracker-microvm/firecracker) to test certain things.
 
-TODO: Write installation instructions here
+Expect it to grow and gain more functionality, but it will always be a simple json loopback-style debug server.
 
-## Usage
 
-TODO: Write usage instructions here
+# Building & Running
 
-## Development
+First we build:
 
-TODO: Write development instructions here
+    shard build
 
-## Contributing
+Then we run:
 
-1. Fork it (<https://github.com/whalesalad/envy/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+    ./bin/envy
 
-## Contributors
-
-- [Michael Whalen](https://github.com/whalesalad) - creator and maintainer
+The `PORT` environment variable is used to determine where it binds, defaulting to `8080`
