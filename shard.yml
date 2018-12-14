@@ -1,0 +1,13 @@
+name: envy
+version: 0.1.0
+
+authors:
+  - Michael Whalen <michael@whalesalad.com>
+
+targets:
+  envy:
+    main: src/envy.cr
+
+crystal: 0.27.0
+
+license: MIT
