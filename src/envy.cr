@@ -7,16 +7,18 @@ module Envy
   end
 
   def port
-    ENV["PORT"].to_i || 8080
+    ENV.fetch("PORT", "8080").to_i
   end
 
   def main
-    server = HTTP::Server.new do |context|
+    server = HTTP::Server.new([
+      HTTP::LogHandler.new,
+    ]) do |context|
       context.response.content_type = "application/json"
       context.response.print environment.to_json
     end
 
-    address = server.bind_tcp(port)
+    address = server.bind_tcp("0.0.0.0", port)
 
     puts "Listening on http://#{address}"
 
