@@ -1,21 +1,20 @@
-require "json"
 require "http/server"
 
-module Envy
-  def environment
-    Hash.zip(ENV.keys, ENV.values)
-  end
+require "./env_info"
 
+module Envy
   def port
     ENV.fetch("PORT", "8080").to_i
   end
 
   def main
+    info = EnvInfo.new
+
     server = HTTP::Server.new([
       HTTP::LogHandler.new,
     ]) do |context|
       context.response.content_type = "application/json"
-      context.response.print environment.to_json
+      context.response.print info.to_json
     end
 
     address = server.bind_tcp("0.0.0.0", port)
